@@ -1,0 +1,9 @@
+list1 = ["name", "lastname", 27, "gender", "job", "company", 1500.50]
+list1[6] = "{:.2f}".format(1500.50)
+tup = (33011, 396132)
+tup1 = tuple(f"{num:,.2f}" for num in tup)
+list1.extend(tup1)
+list1.insert(4, "home address")
+
+for i in list1:
+    print(i)
