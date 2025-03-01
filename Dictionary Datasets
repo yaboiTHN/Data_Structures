@@ -1,0 +1,55 @@
+student_data = {}
+
+def add_student():
+    studentID = input("Enter studentID: ")
+    studentName = input("Enter student's name: ")
+    studentAge = input("Enter student's age: ")
+    studentGrade = input("Enter student's grade: ")
+    
+    student_data[studentID] = {
+        "studentName": studentName,
+        "studentAge": studentAge,
+        "studentGrade": studentGrade
+    }
+    print(f"Student {studentName} added successfully!\n")
+
+def retrieve_info():
+    studentID = input("Enter student ID to retrieve info: ")
+    if studentID in student_data:
+        studentInfo = student_data[studentID]
+        print(f"Name: {studentInfo['studentName']}")
+        print(f"Age: {studentInfo['studentAge']}")
+        print(f"Grade: {studentInfo['studentGrade']}")
+    else:
+        print("Student not found.\n")
+
+def display_students():
+    for studentID, studentInfo in student_data.items():
+        print(f"Student ID: {studentID}")
+        print(f"Name: {studentInfo['studentName']}")
+        print(f"Age: {studentInfo['studentAge']}")
+        print(f"Grade: {studentInfo['studentGrade']}")
+        print("-" *20)
+
+while True:
+    print("1. Add a student")
+    print("2. Display all students")
+    print("3. Retrieve student information. ")
+    print("4. Exit")
+    choice = input("Enter your choice: ")
+    
+    if choice == '1':
+        add_student()
+    elif choice == '2':
+        display_students()
+    elif choice == '3':
+        retrieve_info()
+    elif choice == '4':
+        print("Exiting the program.")
+        break
+    else:
+        print("Invalid choice, please try again.")
+    
+        
+    
+    
