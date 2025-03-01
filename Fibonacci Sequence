@@ -1,0 +1,12 @@
+def fibonacci(x):
+    if x <= 0:
+        return 0
+    elif x == 1:
+        return 1
+    else:
+        return fibonacci(x-2) + fibonacci(x-1)
+
+index = int(input("Enter an index for a Fibonacci number: "))
+fibonacci_number = fibonacci(index)
+
+print(f"The fibonacci number at index {index} is {fibonacci_number}")
