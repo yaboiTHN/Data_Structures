@@ -1,0 +1,68 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+        
+def traverse(head):
+    currentNode = head
+    while currentNode:
+        print(currentNode.data, end=" -> ")
+        currentNode = currentNode.next
+    print("null")
+
+def insertNodeAtPosition(head, newNode, position):
+    if position == 1:
+        newNode.next = head
+        return newNode
+    
+    currentNode = head
+    for i in range(position - 2):
+        if currentNode is None:
+            break
+        currentNode = currentNode.next
+    
+    if currentNode is None:
+        currentNode = head
+        while currentNode.next:
+            currentNode = currentNode.next
+        currentNode.next = newNode
+        return head
+    
+    newNode.next = currentNode.next
+    currentNode.next = newNode
+    return head
+
+def main():
+    length = int(input("Enter the number of nodes in the linked list: "))
+    
+    if length <= 0:
+        print("Invalid length.")
+        return
+    
+    head = None
+    for i in range(length):
+        node_value = int(input(f"Enter value for node {i + 1}: "))
+        newNode = Node(node_value)
+    
+        if head is None:
+            head = newNode
+        else:
+            currentNode = head
+            while currentNode.next:
+                currentNode = currentNode.next
+            currentNode.next = newNode
+
+    print("\nOriginal list:")
+    traverse(head)
+
+    new_node_value = int(input("\nEnter the value of the new node to insert: "))
+    position = int(input("Enter the position where the new node should be inserted: "))
+
+    newNode = Node(new_node_value)
+    head = insertNodeAtPosition(head, newNode, position)
+
+    print("\nAfter insertion:")
+    traverse(head)
+
+# Run the main function
+main()
